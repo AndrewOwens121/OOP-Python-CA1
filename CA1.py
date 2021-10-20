@@ -24,3 +24,6 @@ class Course:
     # Method to return the course title
     def get_course_title(self):
         return self.title
+    # Method to return course code
+    def get_course_code(self):
+        return self.coursecode
