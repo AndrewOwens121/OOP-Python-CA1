@@ -35,7 +35,7 @@ class Course:
     def get_course_count(self):
         return len(self.studentlist)
 
-    # Method to return number of registerd on course
+    # Method to return number of registered on course
     def get_RE_count(self):
         count=0
         for student in self.studentlist:
@@ -51,14 +51,15 @@ class Course:
                 count +=1
         return count
 
+    # Method to return full detailed list of registered students
+    def student_full_list(self):
+        return self.studentlist
+
 
 
     # Methond to return List of registered students, first/last name and status
     def student_status_list(self):
-        statuslist = []
-        for i in self.studentlist:
-            statuslist.append(i.fname+"\t"+i.lname+"\t:-"+i.status)
-        return statuslist
+        return self.studentlist
 
 def main_menu():
     print("Please Choose from one of the below options\n"
@@ -144,8 +145,9 @@ def menu_option3():
         for i in course1.student_status_list():
             print(i)
     elif userinput == 5:
-        print("5")
-        # add functionality
+        for student in course1.student_full_list():
+            print(student.fname,student.lname,student.dob,student.address,student.email,
+                  student.mobile,student.studentnumber,student.status,sep="\t")
 
 
 # initialising empty student list
