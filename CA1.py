@@ -29,6 +29,15 @@ class Course:
         return self.coursecode
 
 
+def main_menu():
+    print("Please Choose from one of the below options\n"
+          "1: Register Student\n"
+          "2. Search Registered Students\n"
+          "3. Queries\n"
+          "0. Exit Program")
+    userinput=int(input(": "))
+
+
 
 #initialising empty student list
 student_list =[]
@@ -38,7 +47,7 @@ course1=Course("Fund. of Data Science","TU257","Jon McCarthy",student_list)
 
 # loop to continue until course is full
 while len(student_list) <30:
-    print()
+    main_menu()
 # else displays that course is full when list reaches 30
 else:
     print("Course at Full Capacity!")
