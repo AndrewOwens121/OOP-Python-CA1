@@ -135,10 +135,10 @@ def menu_option3():
         print(course1.get_course_count())
         # add functionality
     elif userinput == 2:
-        print(course1.get_EL_count())
+        print(course1.get_RE_count())
         # add functionality
     elif userinput == 3:
-        print(course1.get_RE_count())
+        print(course1.get_EL_count())
         # add functionality
     elif userinput == 4:
         for i in course1.student_status_list():
