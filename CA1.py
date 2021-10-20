@@ -36,7 +36,17 @@ def main_menu():
           "3. Queries\n"
           "0. Exit Program")
     userinput=int(input(": "))
-
+    if userinput == 0:
+        print("Program Terminated")
+        return
+    elif userinput ==1:
+        print("Menu Option 1")
+    elif userinput ==2:
+        print("Menu Option 2")
+    elif userinput ==3:
+        print("Menu Option 3")
+    else:
+        print("Invalid Input!")
 
 
 #initialising empty student list
