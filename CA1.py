@@ -1,3 +1,5 @@
+import time #Time imported to add delays
+
 class Student:
     # initialise Student Class, assigning the required parameters to attributes as per below
     def __init__(self, new_fname, new_lname, new_dob, new_address, new_email, new_mobilenum, new_studentnum,
@@ -110,6 +112,7 @@ def menu_option1():
     course1.studentlist.append(Student(fname, lname, dob, address, email, phone, studentnum, status))
 
     print("*** Student Successfully Registered ***")
+    time.sleep(2)
 
 
 def menu_option2():
@@ -131,8 +134,10 @@ def menu_option2():
 
         if result == True:
             print("Match Found!")
+            time.sleep(2)
         else:
             print("Match Not Found!")
+            time.sleep(2)
 
     if userinput == 2:
         print("Student Number Search Selected")
@@ -141,8 +146,10 @@ def menu_option2():
 
         if result == True:
             print("Match Found!")
+            time.sleep(2)
         else:
             print("Match Not Found!")
+            time.sleep(2)
 
         # Add function to search for email
 
@@ -161,21 +168,22 @@ def menu_option3():
         main_menu()
     elif userinput == 1:
         print(course1.get_course_count())
-        # add functionality
+        time.sleep(2)
     elif userinput == 2:
         print(course1.get_re_count())
-        # add functionality
+        time.sleep(2)
     elif userinput == 3:
         print(course1.get_el_count())
-        # add functionality
+        time.sleep(2)
     elif userinput == 4:
         for i in course1.student_status_list():
             print(i)
+        time.sleep(2)
     elif userinput == 5:
         for student in course1.student_full_list():
             print(student.fname, student.lname, student.dob, student.address, student.email,
                   student.mobile, student.studentnumber, student.status, sep="\t")
-
+        time.sleep(2)
 
 # initialising empty student list
 course1_student_list = []
