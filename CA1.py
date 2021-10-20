@@ -36,30 +36,29 @@ class Course:
         return len(self.studentlist)
 
     # Method to return number of registered on course
-    def get_RE_count(self):
-        count=0
+    def get_re_count(self):
+        count = 0
         for student in self.studentlist:
             if student.status == "RE":
-                count +=1
+                count += 1
         return count
 
     # Method to return number of eligible on course
-    def get_EL_count(self):
-        count=0
+    def get_el_count(self):
+        count = 0
         for student in self.studentlist:
             if student.status == "EL":
-                count +=1
+                count += 1
         return count
 
     # Method to return full detailed list of registered students
     def student_full_list(self):
         return self.studentlist
 
-
-
     # Methond to return List of registered students, first/last name and status
     def student_status_list(self):
         return self.studentlist
+
 
 def main_menu():
     print("Please Choose from one of the below options\n"
@@ -89,10 +88,10 @@ def menu_option1():
     address = input("Address : ")
     email = input("Email Address : ")
     phone = input("Phone Number : ")
-    studentNo = input("Student Number : ")
+    studentnum = input("Student Number : ")
     status = input("Registration Status (EL/RE only) : ")
 
-    course1.studentlist.append(Student(fname, lname, dob, address, email, phone, studentNo, status))
+    course1.studentlist.append(Student(fname, lname, dob, address, email, phone, studentnum, status))
 
     print("*** Student Successfully Registered ***")
 
@@ -136,31 +135,30 @@ def menu_option3():
         print(course1.get_course_count())
         # add functionality
     elif userinput == 2:
-        print(course1.get_RE_count())
+        print(course1.get_re_count())
         # add functionality
     elif userinput == 3:
-        print(course1.get_EL_count())
+        print(course1.get_el_count())
         # add functionality
     elif userinput == 4:
         for i in course1.student_status_list():
             print(i)
     elif userinput == 5:
         for student in course1.student_full_list():
-            print(student.fname,student.lname,student.dob,student.address,student.email,
-                  student.mobile,student.studentnumber,student.status,sep="\t")
+            print(student.fname, student.lname, student.dob, student.address, student.email,
+                  student.mobile, student.studentnumber, student.status, sep="\t")
 
 
 # initialising empty student list
 course1_student_list = []
 
-
-
-#TESTING
-student1=Student("Andrew","Owens","08/06/96","Celbridge","andrew.owens121@gmail.com","0874556013","C14363641","EL")
-student2=Student("MaryAnn","Jones","18/09/96","Leixlip","MJones55@gmail.com","0873164013","C15363641","EL")
-student3=Student("Patrick","Peterson","14/07/95","Lucan","PPLucan@gmail.com","0874553845","C16363641","EL")
-student4=Student("Janet","O'Reilly","15/10/84","Blanch","JOrielly@gmail.com","0862232134","C17363641","RE")
-course1_student_list =[student1,student2,student3,student4]
+# TESTING
+student1 = Student("Andrew", "Owens", "08/06/96", "Celbridge", "andrew.owens121@gmail.com", "0874556013", "C14363641",
+                   "EL")
+student2 = Student("MaryAnn", "Jones", "18/09/96", "Leixlip", "MJones55@gmail.com", "0873164013", "C15363641", "EL")
+student3 = Student("Patrick", "Peterson", "14/07/95", "Lucan", "PPLucan@gmail.com", "0874553845", "C16363641", "EL")
+student4 = Student("Janet", "O'Reilly", "15/10/84", "Blanch", "JOrielly@gmail.com", "0862232134", "C17363641", "RE")
+course1_student_list = [student1, student2, student3, student4]
 
 # Creating a course object
 course1 = Course("Fund. of Data Science", "TU257", "Jon McCarthy", course1_student_list)
