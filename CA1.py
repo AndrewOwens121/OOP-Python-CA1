@@ -51,6 +51,22 @@ class Course:
                 count += 1
         return count
 
+    # Method to Search for email in registered students
+    def email_search(self,email):
+        for student in self.studentlist:
+            if student.email == email:
+                return True
+        return False
+
+
+    # Method to Search for phone number in registered students
+    def student_num_search(self,studentnumber):
+        for student in self.studentlist:
+            if student.studentnumber == studentnumber:
+                return True
+        return False
+
+
     # Method to return full detailed list of registered students
     def student_full_list(self):
         return self.studentlist
@@ -111,11 +127,23 @@ def menu_option2():
     if userinput == 1:
         print("Email Search Selected")
         email = input("Please enter email address: ")
-        # Add function to search for email
+        result=course1.email_search(email)
+
+        if result == True:
+            print("Match Found!")
+        else:
+            print("Match Not Found!")
 
     if userinput == 2:
         print("Student Number Search Selected")
         studentnum = input("Please enter Student Number: ")
+        result=course1.student_num_search(studentnum)
+
+        if result == True:
+            print("Match Found!")
+        else:
+            print("Match Not Found!")
+
         # Add function to search for email
 
 
