@@ -10,6 +10,9 @@ class Student:
         self.mobile = new_mobilenum
         self.studentnumber = new_studentnum
         self.status = new_status
+    # Method to return status of individual student
+    def get_status(self):
+        return self.status
 
 
 class Course:
