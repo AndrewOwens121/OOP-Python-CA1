@@ -61,7 +61,25 @@ def menu_option1():
 
     student_list.append(Student(fname,lname,dob,address,email,phone,studentNo,status))
 
-    print("Student Successfully Registered")
+    print("*** Student Successfully Registered ***")
+
+def menu_option2():
+    print("Please Choose from one of the search options below\n"
+          "1: Email Address\n"
+          "2. Student Number\n"
+          "0. Go Back to Main Menu\n")
+    userinput=int(input(": "))
+    if userinput == 0:
+        print("Main Menu Selected")
+        main_menu()
+    if userinput == 1:
+        print("Email Search Selected")
+        email = input("Please enter email address: ")
+        #Add function to search for email
+    if userinput == 2:
+        print("Student Number Search Selected")
+        studentnum = input("Please enter Student Number: ")
+        #Add function to search for email
 
 
 #initialising empty student list
