@@ -27,3 +27,16 @@ class Course:
     # Method to return course code
     def get_course_code(self):
         return self.coursecode
+
+#initialising empty student list
+student_list =[]
+
+#Creating a course object
+course1=Course("Fund. of Data Science","TU257","Jon McCarthy",student_list)
+
+# loop to continue until course is full
+while len(student_list) <30:
+    print()
+# else displays that course is full when list reaches 30
+else:
+    print("Course at Full Capacity!")
