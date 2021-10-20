@@ -21,3 +21,6 @@ class Course:
         self.coursecode = new_code
         self.chairperson = new_chair
         self.studentlist = new_studentlist
+    # Method to return the course title
+    def get_course_title(self):
+        return self.title
