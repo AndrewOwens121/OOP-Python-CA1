@@ -10,6 +10,7 @@ class Student:
         self.mobile = new_mobilenum
         self.studentnumber = new_studentnum
         self.status = new_status
+
     # Method to return status of individual student
     def get_status(self):
         return self.status
@@ -21,13 +22,43 @@ class Course:
         self.coursecode = new_code
         self.chairperson = new_chair
         self.studentlist = new_studentlist
+
     # Method to return the course title
     def get_course_title(self):
         return self.title
+
     # Method to return course code
     def get_course_code(self):
         return self.coursecode
 
+    # Method to return number of registerd on course
+    def get_course_count(self):
+        return len(self.studentlist)
+
+    # Method to return number of registerd on course
+    def get_RE_count(self):
+        count=0
+        for student in self.studentlist:
+            if student.status == "RE":
+                count +=1
+        return count
+
+    # Method to return number of eligible on course
+    def get_EL_count(self):
+        count=0
+        for student in self.studentlist:
+            if student.status == "EL":
+                count +=1
+        return count
+
+
+
+    # Methond to return List of registered students, first/last name and status
+    def student_status_list(self):
+        statuslist = []
+        for i in self.studentlist:
+            statuslist.append(i.fname+"\t"+i.lname+"\t:-"+i.status)
+        return statuslist
 
 def main_menu():
     print("Please Choose from one of the below options\n"
@@ -35,51 +66,58 @@ def main_menu():
           "2. Search Registered Students\n"
           "3. Queries\n"
           "0. Exit Program")
-    userinput=int(input(": "))
+    userinput = int(input(": "))
     if userinput == 0:
         print("Program Terminated")
         return
-    elif userinput ==1:
+    elif userinput == 1:
         menu_option1()
-    elif userinput ==2:
+    elif userinput == 2:
         menu_option2()
-    elif userinput ==3:
+    elif userinput == 3:
         menu_option3()
     else:
         print("Invalid Input!")
 
+
 def menu_option1():
     print("Please enter the students info below, and hit enter\n")
     fname = input("First Name : ")
-    lname= input("Last Name : ")
-    dob= input("Date of Birth : ")
-    address= input("Address : ")
-    email= input("Email Address : ")
-    phone= input("Phone Number : ")
-    studentNo= input("Student Number : ")
-    status= input("Registration Status (EL/RE only) : ")
+    lname = input("Last Name : ")
+    dob = input("Date of Birth : ")
+    address = input("Address : ")
+    email = input("Email Address : ")
+    phone = input("Phone Number : ")
+    studentNo = input("Student Number : ")
+    status = input("Registration Status (EL/RE only) : ")
 
-    student_list.append(Student(fname,lname,dob,address,email,phone,studentNo,status))
+    course1.studentlist.append(Student(fname, lname, dob, address, email, phone, studentNo, status))
 
     print("*** Student Successfully Registered ***")
+
 
 def menu_option2():
     print("Please Choose from one of the search options below\n"
           "1: Email Address\n"
           "2. Student Number\n"
           "0. Go Back to Main Menu\n")
-    userinput=int(input(": "))
+
+    userinput = int(input(": "))
+
     if userinput == 0:
         print("Main Menu Selected")
         main_menu()
+
     if userinput == 1:
         print("Email Search Selected")
         email = input("Please enter email address: ")
-        #Add function to search for email
+        # Add function to search for email
+
     if userinput == 2:
         print("Student Number Search Selected")
         studentnum = input("Please enter Student Number: ")
-        #Add function to search for email
+        # Add function to search for email
+
 
 def menu_option3():
     print("Please Choose from one of the Queries Below:\n"
@@ -89,34 +127,44 @@ def menu_option3():
           "4. List of Registered students and Status\n"
           "5. Full Student Details\n"
           "0. Go Back to Main Menu")
-    userinput=int(input(": "))
+    userinput = int(input(": "))
     if userinput == 0:
         print("Main Menu Selected")
         main_menu()
-    elif userinput ==1:
-        print("1")
-        #add functionality
-    elif userinput ==2:
-        print("2")
-        #add functionality
-    elif userinput ==3:
-        print("3")
-        #add functionality
-    elif userinput ==4:
-        print("4")
-        #add functionality
-    elif userinput ==5:
+    elif userinput == 1:
+        print(course1.get_course_count())
+        # add functionality
+    elif userinput == 2:
+        print(course1.get_EL_count())
+        # add functionality
+    elif userinput == 3:
+        print(course1.get_RE_count())
+        # add functionality
+    elif userinput == 4:
+        for i in course1.student_status_list():
+            print(i)
+    elif userinput == 5:
         print("5")
-        #add functionality
+        # add functionality
 
-#initialising empty student list
-student_list =[]
 
-#Creating a course object
-course1=Course("Fund. of Data Science","TU257","Jon McCarthy",student_list)
+# initialising empty student list
+course1_student_list = []
+
+
+
+#TESTING
+student1=Student("Andrew","Owens","08/06/96","Celbridge","andrew.owens121@gmail.com","0874556013","C14363641","EL")
+student2=Student("MaryAnn","Jones","18/09/96","Leixlip","MJones55@gmail.com","0873164013","C15363641","EL")
+student3=Student("Patrick","Peterson","14/07/95","Lucan","PPLucan@gmail.com","0874553845","C16363641","EL")
+student4=Student("Janet","O'Reilly","15/10/84","Blanch","JOrielly@gmail.com","0862232134","C17363641","RE")
+course1_student_list =[student1,student2,student3,student4]
+
+# Creating a course object
+course1 = Course("Fund. of Data Science", "TU257", "Jon McCarthy", course1_student_list)
 
 # loop to continue until course is full
-while len(student_list) <30:
+while len(course1.studentlist) < 30:
     main_menu()
 # else displays that course is full when list reaches 30
 else:
