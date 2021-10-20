@@ -42,9 +42,9 @@ def main_menu():
     elif userinput ==1:
         menu_option1()
     elif userinput ==2:
-        print("Menu Option 2")
+        menu_option2()
     elif userinput ==3:
-        print("Menu Option 3")
+        menu_option3()
     else:
         print("Invalid Input!")
 
@@ -81,6 +81,33 @@ def menu_option2():
         studentnum = input("Please enter Student Number: ")
         #Add function to search for email
 
+def menu_option3():
+    print("Please Choose from one of the Queries Below:\n"
+          "1: Number of Students Registered\n"
+          "2. Number of Students with status RE\n"
+          "3. Number of Students with status EL\n"
+          "4. List of Registered students and Status\n"
+          "5. Full Student Details\n"
+          "0. Go Back to Main Menu")
+    userinput=int(input(": "))
+    if userinput == 0:
+        print("Main Menu Selected")
+        main_menu()
+    elif userinput ==1:
+        print("1")
+        #add functionality
+    elif userinput ==2:
+        print("2")
+        #add functionality
+    elif userinput ==3:
+        print("3")
+        #add functionality
+    elif userinput ==4:
+        print("4")
+        #add functionality
+    elif userinput ==5:
+        print("5")
+        #add functionality
 
 #initialising empty student list
 student_list =[]
