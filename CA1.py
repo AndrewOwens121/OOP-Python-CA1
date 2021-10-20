@@ -40,13 +40,28 @@ def main_menu():
         print("Program Terminated")
         return
     elif userinput ==1:
-        print("Menu Option 1")
+        menu_option1()
     elif userinput ==2:
         print("Menu Option 2")
     elif userinput ==3:
         print("Menu Option 3")
     else:
         print("Invalid Input!")
+
+def menu_option1():
+    print("Please enter the students info below, and hit enter\n")
+    fname = input("First Name : ")
+    lname= input("Last Name : ")
+    dob= input("Date of Birth : ")
+    address= input("Address : ")
+    email= input("Email Address : ")
+    phone= input("Phone Number : ")
+    studentNo= input("Student Number : ")
+    status= input("Registration Status (EL/RE only) : ")
+
+    student_list.append(Student(fname,lname,dob,address,email,phone,studentNo,status))
+
+    print("Student Successfully Registered")
 
 
 #initialising empty student list
