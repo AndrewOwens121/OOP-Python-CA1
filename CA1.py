@@ -1,6 +1,7 @@
 class Student:
-    #initialise Student Class, assigning the required parameters to attributes as per below
-    def __init__(self,new_fname,new_lname,new_dob, new_address,new_email,new_mobilenum, new_studentnum, new_status):
+    # initialise Student Class, assigning the required parameters to attributes as per below
+    def __init__(self, new_fname, new_lname, new_dob, new_address, new_email, new_mobilenum, new_studentnum,
+                 new_status):
         self.fname = new_fname
         self.lname = new_lname
         self.dob = new_dob
@@ -9,3 +10,11 @@ class Student:
         self.mobile = new_mobilenum
         self.studentnumber = new_studentnum
         self.status = new_status
+
+
+class Course:
+    def __init__(self, new_title, new_code, new_chair, new_studentlist):
+        self.title = new_title
+        self.coursecode = new_code
+        self.chairperson = new_chair
+        self.studentlist = new_studentlist
