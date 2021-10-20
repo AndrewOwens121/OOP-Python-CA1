@@ -75,7 +75,10 @@ class Course:
 
     # Methond to return List of registered students, first/last name and status
     def student_status_list(self):
-        return self.studentlist
+        statuslist=[]
+        for student in self.studentlist:
+            statuslist.append(student.fname+" "+student.lname+" "+student.status)
+        return statuslist
 
 
 def main_menu():
@@ -99,6 +102,7 @@ def main_menu():
 
 
 def menu_option1():
+    clear_screen()
     print("Please enter the students info below, and hit enter\n")
     fname = input("First Name : ")
     lname = input("Last Name : ")
@@ -116,6 +120,7 @@ def menu_option1():
 
 
 def menu_option2():
+    clear_screen()
     print("Please Choose from one of the search options below\n"
           "1: Email Address\n"
           "2. Student Number\n"
@@ -155,6 +160,7 @@ def menu_option2():
 
 
 def menu_option3():
+    clear_screen()
     print("Please Choose from one of the Queries Below:\n"
           "1: Number of Students Registered\n"
           "2. Number of Students with status RE\n"
@@ -185,6 +191,11 @@ def menu_option3():
                   student.mobile, student.studentnumber, student.status, sep="\t")
         time.sleep(2)
 
+
+def clear_screen():
+    for i in range(24):
+        print()
+
 # initialising empty student list
 course1_student_list = []
 
@@ -201,6 +212,7 @@ course1 = Course("Fund. of Data Science", "TU257", "Jon McCarthy", course1_stude
 
 # loop to continue until course is full
 while len(course1.studentlist) < 30:
+    clear_screen()
     main_menu()
 # else displays that course is full when list reaches 30
 else:
