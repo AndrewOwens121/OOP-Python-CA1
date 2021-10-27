@@ -143,8 +143,11 @@ def menu_option2():
         email = input("Please enter email address: ")
         result = TU257.email_search(email)
         if result[0] == True:
+            clear_screen()
             print(f"Match Found! - This Email belongs to : {result[1]} {result[2]}")
             time.sleep(2)
+            print("Would you like to Update or Delete this entry? \n 1: Update\n 2: Delete")
+            usrinput = int(input("Enter Choice: "))
         else:
             print("Match Not Found!")
             time.sleep(2)
@@ -155,8 +158,11 @@ def menu_option2():
         result = TU257.student_num_search(studentnum)
 
         if result[0] == True:
+            clear_screen()
             print(f"Match Found! - This Email belongs to : {result[1]} {result[2]}")
             time.sleep(2)
+            print("Would you like to Update or Delete this entry? \n 1: Update\n 2: Delete")
+            usrinput = int(input("Enter Choice: "))
         else:
             print("Match Not Found!")
             time.sleep(2)
