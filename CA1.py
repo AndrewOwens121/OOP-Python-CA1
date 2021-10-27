@@ -20,6 +20,7 @@ class Student:
 
 
 class Course:
+    # initialise Course Class, assigning the required parameters to attributes as per below
     def __init__(self, new_title, new_code, new_chair, new_studentlist):
         self.title = new_title
         self.coursecode = new_code
@@ -34,7 +35,7 @@ class Course:
     def get_course_code(self):
         return self.coursecode
 
-    # Method to return number of registerd on course
+    # Method to return number of registered on course
     def get_course_count(self):
         return len(self.studentlist)
 
@@ -54,39 +55,42 @@ class Course:
                 count += 1
         return count
 
-    # Method to Search for email in registered students
+    # Method to Search for email in registered students, parameter is user inputted email address
     def email_search(self, email):
         for student in self.studentlist:
             # If parameter is equal to a email value within student list, return student
             if student.email == email:
                 return student
-            # returns tuple with one item only, helps keep else statement in menu cleaner
-        return None,
+        return None
 
-    # Method to Search for ph2
-    #one number in registered students
+    # Method to Search for phone number in registered students
     def student_num_search(self, studentnumber):
         for student in self.studentlist:
-            # If parameter is equal to a student number value within student list,
-            # returns a tuple containing a Bool indicating if a match was found, and first and last name of the student
+            # If parameter is equal to a student number value within student list, returns that student
             if student.studentnumber == studentnumber:
                 return student
-            # returns tuple with one item only, helps keep else statement in menu cleaner
-        return None,
+        return None
 
     # Method to return full detailed list of registered students
     def student_full_list(self):
         return self.studentlist
 
-    # Methond to return List of registered students, first/last name and status
+    # Method to return List of registered students, first/last name and status
     def student_status_list(self):
         statuslist = []
         for student in self.studentlist:
             statuslist.append(student.fname + " " + student.lname + " " + student.status)
         return statuslist
 
-    #Method to update info on student list
+    # Method to update info on student list
     def update_student(self, student, choice, value):
+        """
+        Method to Update a particular attribute within a student from studentlist
+        :param student: Accepts student found via search
+        :param choice: Stores user choice, as to which attribute is to be changed
+        :param value: Stores user input as to what the new value of the attribute is
+        :return: None
+        """
         if choice == 1:
             student.fname = value
         if choice == 2:
@@ -107,6 +111,10 @@ class Course:
 
 
 def main_menu():
+    """
+    Function to help organise the Menu System
+    :return: None
+    """
     print("Please Choose from one of the below options\n"
           "1: Register Student\n"
           "2. Search Registered Students\n"
@@ -127,7 +135,13 @@ def main_menu():
 
 
 def menu_option1():
-    clear_screen()
+    """
+    Function to help organise the Menu System
+    :return: None
+    """
+    clear_screen() # Clears screen to make using program easier
+
+    #Below prompts user for input to required student info
     print("Please enter the students info below, and hit enter\n")
     fname = input("First Name : ")
     lname = input("Last Name : ")
@@ -138,14 +152,19 @@ def menu_option1():
     studentnum = input("Student Number : ")
     status = input("Registration Status (EL/RE only) : ")
 
+    # Appends student to the list featuring info inputted by user above
     TU257.studentlist.append(Student(fname, lname, dob, address, email, phone, studentnum, status))
 
     print("*** Student Successfully Registered ***")
-    time.sleep(2)
+    time.sleep(2) # pauses screen to help user read message
 
 
 def menu_option2():
-    clear_screen()
+    """
+    Function to help organise the Menu System
+    :return: None
+    """
+    clear_screen() # Clears screen to make using program easier
     print("Please Choose from one of the search options below\n"
           "1: Email Address\n"
           "2. Student Number\n"
@@ -155,22 +174,31 @@ def menu_option2():
 
     if userinput == 0:
         print("Main Menu Selected")
+        time.sleep(1)
         main_menu()
 
     if userinput == 1:
         print("Email Search Selected")
         email = input("Please enter email address: ")
-        result = TU257.email_search(email)
-        if result == None:
+
+        #passes the email inputted by user to the email_search method in Course class
+        student = TU257.email_search(email)
+
+        # None is returned by method if no match found
+        if student == None:
             print("Match Not Found!")
             time.sleep(2)
 
+        # if match is found
         else:
             clear_screen()
-            print(f"Match Found! - This Email belongs to : {result.fname} {result.lname}")
+            print(f"Match Found! - This Email belongs to : {student.fname} {student.lname}")
             time.sleep(2)
+
+            # prompting user if they want to choose between Update and Delete Methods
             print("Would you like to Update or Delete this entry? \n 1: Update\n 2: Delete")
             usrinput = int(input("Enter Choice: "))
+
             #Adding conditional choice based on user input
             if usrinput == 1:
                 print("""Please select which attribute you would like to update:
@@ -185,13 +213,14 @@ def menu_option2():
                 """)
                 usrchoice = int(input("Choice : "))
                 updatedInfo = input("Please input replacement value for this field: ")
+
                 #Calls Method to update the student attribute selected by user (usrchoice)
-                #with the new info, inputted by user (updatedInfo)
-                TU257.update_student(result,usrchoice,updatedInfo)
+                #with the new info, inputted by user (updatedInfo) - 'result' is the student being updated
+                TU257.update_student(student,usrchoice,updatedInfo)
 
             elif usrinput == 2:
-                TU257.studentlist.remove(result)
-                print(f"{result.fname} {result.lname} - Has been Removed")
+                TU257.studentlist.remove(student)
+                print(f"{student.fname} {student.lname} - Has been Removed")
                 time.sleep(2)
             else:
                 print("Incorrect Choice - Returning to Menu")
@@ -201,15 +230,15 @@ def menu_option2():
     if userinput == 2:
         print("Student Number Search Selected")
         studentnum = input("Please enter Student Number: ")
-        result = TU257.student_num_search(studentnum)
+        student = TU257.student_num_search(studentnum)
 
-        if result == None:
+        if student == None:
             print("Match Not Found!")
             time.sleep(2)
 
         else:
             clear_screen()
-            print(f"Match Found! - This Student Number belongs to : {result.fname} {result.lname}")
+            print(f"Match Found! - This Student Number belongs to : {student.fname} {student.lname}")
             time.sleep(2)
             print("Would you like to Update or Delete this entry? \n 1: Update\n 2: Delete")
             usrinput = int(input("Enter Choice: "))
@@ -229,7 +258,7 @@ def menu_option2():
                 usrchoice = int(input("Choice : "))
                 updatedInfo = input("Please input replacement value for this field: ")
 
-                TU257.update_student(result,usrchoice,updatedInfo)
+                TU257.update_student(student,usrchoice,updatedInfo)
 
 
 
@@ -294,11 +323,11 @@ def clear_screen():
 TU257_student_list = []
 
 # TEST CODE BELOW
-student1 = Student("Andrew", "Owens", "08/06/96", "Celbridge", "andrew.owens121@gmail.com", "0874556013", "C14363641",
+student1 = Student("First", "Ireem", "08/05/96", "New York", "Catcher@gmail.com", "08776556013", "X14363641",
                    "EL")
-student2 = Student("MaryAnn", "Jones", "18/09/96", "Leixlip", "MJones55@gmail.com", "0873164013", "C15363641", "EL")
-student3 = Student("Patrick", "Peterson", "14/07/95", "Lucan", "PPLucan@gmail.com", "0874553845", "C16363641", "EL")
-student4 = Student("Janet", "O'Reilly", "15/10/84", "Blanch", "JOrielly@gmail.com", "0862232134", "C17363641", "RE")
+student2 = Student("MaryAnn", "Jones", "18/09/96", "Boston", "MJones55@gmail.com", "0873164013", "R15363641", "EL")
+student3 = Student("Patrick", "Peterson", "14/07/95", "Abu Dhabi", "PPLucan@gmail.com", "0874553845", "D16363641", "EL")
+student4 = Student("Janet", "O'Reilly", "15/10/84", "Sydney", "JOrielly@gmail.com", "0862232134", "L17363641", "RE")
 TU257_student_list = [student1, student2, student3, student4]
 # TEST CODE ABOVE
 
