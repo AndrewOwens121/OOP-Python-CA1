@@ -119,7 +119,7 @@ def menu_option1():
     studentnum = input("Student Number : ")
     status = input("Registration Status (EL/RE only) : ")
 
-    course1.studentlist.append(Student(fname, lname, dob, address, email, phone, studentnum, status))
+    TU257.studentlist.append(Student(fname, lname, dob, address, email, phone, studentnum, status))
 
     print("*** Student Successfully Registered ***")
     time.sleep(2)
@@ -141,7 +141,7 @@ def menu_option2():
     if userinput == 1:
         print("Email Search Selected")
         email = input("Please enter email address: ")
-        result = course1.email_search(email)
+        result = TU257.email_search(email)
         if result[0] == True:
             print(f"Match Found! - This Email belongs to : {result[1]} {result[2]}")
             time.sleep(2)
@@ -152,7 +152,7 @@ def menu_option2():
     if userinput == 2:
         print("Student Number Search Selected")
         studentnum = input("Please enter Student Number: ")
-        result = course1.student_num_search(studentnum)
+        result = TU257.student_num_search(studentnum)
 
         if result[0] == True:
             print(f"Match Found! - This Email belongs to : {result[1]} {result[2]}")
@@ -178,26 +178,31 @@ def menu_option3():
         print("Main Menu Selected")
         main_menu()
     elif userinput == 1:
-        print(f"Number of Students Registered is : {course1.get_course_count()}")
+        print(f"Number of Students Registered is : {TU257.get_course_count()}")
         time.sleep(2)
+        menu_option3()
     elif userinput == 2:
-        print(f"Number of Students with RE status is : {course1.get_re_count()}")
+        print(f"Number of Students with RE status is : {TU257.get_re_count()}")
         time.sleep(2)
+        menu_option3()
     elif userinput == 3:
-        print(f"Number of Students with EL status is : {course1.get_el_count()}")
+        print(f"Number of Students with EL status is : {TU257.get_el_count()}")
         time.sleep(2)
+        menu_option3()
     elif userinput == 4:
         print("First Name - Last Name - Status")
-        for i in course1.student_status_list():
+        for i in TU257.student_status_list():
             print(i)
         time.sleep(2)
+        menu_option3()
     elif userinput == 5:
         print(
             "First Name - Last Name - DOB - Student Address - Student Email - Student Mobile - Student Number - Student Status")
-        for student in course1.student_full_list():
+        for student in TU257.student_full_list():
             print(student.fname, student.lname, student.dob, student.address, student.email,
                   student.mobile, student.studentnumber, student.status, sep="\t")
         time.sleep(2)
+        menu_option3()
 
 
 def clear_screen():
@@ -206,21 +211,22 @@ def clear_screen():
 
 
 # initialising empty student list
-course1_student_list = []
+TU257_student_list = []
 
-# TESTING
+# TEST CODE BELOW
 student1 = Student("Andrew", "Owens", "08/06/96", "Celbridge", "andrew.owens121@gmail.com", "0874556013", "C14363641",
                    "EL")
 student2 = Student("MaryAnn", "Jones", "18/09/96", "Leixlip", "MJones55@gmail.com", "0873164013", "C15363641", "EL")
 student3 = Student("Patrick", "Peterson", "14/07/95", "Lucan", "PPLucan@gmail.com", "0874553845", "C16363641", "EL")
 student4 = Student("Janet", "O'Reilly", "15/10/84", "Blanch", "JOrielly@gmail.com", "0862232134", "C17363641", "RE")
-course1_student_list = [student1, student2, student3, student4]
+TU257_student_list = [student1, student2, student3, student4]
+# TEST CODE ABOVE
 
 # Creating a course object
-course1 = Course("Fund. of Data Science", "TU257", "Jon McCarthy", course1_student_list)
+TU257 = Course("Fund. of Data Science", "TU257", "Jon McCarthy", TU257_student_list)
 
 # loop to continue until course is full
-while len(course1.studentlist) < 30:
+while len(TU257.studentlist) < 30:
     clear_screen()
     main_menu()
 # else displays that course is full when list reaches 30
