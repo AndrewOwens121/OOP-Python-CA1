@@ -173,19 +173,21 @@ def menu_option3():
         print("Main Menu Selected")
         main_menu()
     elif userinput == 1:
-        print(course1.get_course_count())
+        print(f"Number of Students Registered is : {course1.get_course_count()}")
         time.sleep(2)
     elif userinput == 2:
-        print(course1.get_re_count())
+        print(f"Number of Students with RE status is : {course1.get_re_count()}")
         time.sleep(2)
     elif userinput == 3:
-        print(course1.get_el_count())
+        print(f"Number of Students with EL status is : {course1.get_el_count()}")
         time.sleep(2)
     elif userinput == 4:
+        print("First Name - Last Name - Status")
         for i in course1.student_status_list():
             print(i)
         time.sleep(2)
     elif userinput == 5:
+        print("First Name - Last Name - DOB - Student Address - Student Email - Student Mobile - Student Number - Student Status")
         for student in course1.student_full_list():
             print(student.fname, student.lname, student.dob, student.address, student.email,
                   student.mobile, student.studentnumber, student.status, sep="\t")
