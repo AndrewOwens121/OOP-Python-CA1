@@ -79,7 +79,9 @@ class Course:
     def student_status_list(self):
         statuslist = []
         for student in self.studentlist:
-            statuslist.append(student.fname + " " + student.lname + " " + student.status)
+            #templist =[]
+            #templist.extend()
+            statuslist.append([student.fname, student.lname, student.status])
         return statuslist
 
     # Method to update info on student list
@@ -259,8 +261,6 @@ def menu_option2():
 
                 TU257.set_update(student, usrchoice, updatedInfo)
 
-
-
             elif usrinput == 2:
                 TU257.studentlist.remove(student)
                 print(f"{student.fname} {student.lname} - Has been Removed")
@@ -297,17 +297,38 @@ def menu_option3():
         time.sleep(2)
         menu_option3()
     elif userinput == 4:
-        print("First Name - Last Name - Status")
-        for i in TU257.student_status_list():
-            print(i)
+        print(
+            f"{'First Name' :<15}"
+            f"{'Last Name':<15}"
+            f"{'Status':<10}")
+        for student in TU257.student_full_list():
+            print(
+                f"{student.fname :<15}"
+                f"{student.lname :<15}"
+                f"{student.status :<15}")
         time.sleep(2)
         menu_option3()
     elif userinput == 5:
+        #Headers
         print(
-            "First Name - Last Name - DOB - Student Address - Student Email - Student Mobile - Student Number - Student Status")
+            f"{'First Name' :<15}"
+            f"{'Last Name':<15}"
+            f"{'DOB':<10}"
+            f"{'Student Address':<20}"
+            f"{'Student Email':<20}"
+            f"{'Student Mobile' :<20}"
+            f"{'Student Number':<20}"
+            f"{'Student Status':<10}")
+        #For loop to print contents of full student list
         for student in TU257.student_full_list():
-            print(student.fname, student.lname, student.dob, student.address, student.email,
-                  student.mobile, student.studentnumber, student.status, sep="\t")
+            print(f"{student.fname :<15}"
+                  f"{student.lname :<15}"
+                  f"{student.dob :<10}"
+                  f"{student.address:<20}"
+                  f"{student.email:<20}"
+                  f"{student.mobile:<20}"
+                  f"{student.studentnumber:<20}"
+                  f"{student.status:<10}")
         time.sleep(2)
         menu_option3()
 
@@ -321,12 +342,12 @@ def clear_screen():
 TU257_student_list = []
 
 # TEST CODE BELOW
-# student1 = Student("First", "Ireem", "08/05/96", "New York", "Catcher@gmail.com", "08776556013", "X14363641",
-#                    "EL")
-# student2 = Student("MaryAnn", "Jones", "18/09/96", "Boston", "MJones55@gmail.com", "0873164013", "R15363641", "EL")
-# student3 = Student("Patrick", "Peterson", "14/07/95", "Abu Dhabi", "PPLucan@gmail.com", "0874553845", "D16363641", "EL")
-# student4 = Student("Janet", "O'Reilly", "15/10/84", "Sydney", "JOrielly@gmail.com", "0862232134", "L17363641", "RE")
-# TU257_student_list = [student1, student2, student3, student4]
+student1 = Student("First", "Ireem", "08/05/96", "New York", "Catcher@gmail.com", "08776556013", "X14363641",
+                   "EL")
+student2 = Student("MaryAnn", "Jones", "18/09/96", "Boston", "MJones55@gmail.com", "0873164013", "R15363641", "EL")
+student3 = Student("Patrick", "Peterson", "14/07/95", "Abu Dhabi", "PPLucan@gmail.com", "0874553845", "D16363641", "EL")
+student4 = Student("Janet", "O'Reilly", "15/10/84", "Sydney", "JOrielly@gmail.com", "0862232134", "L17363641", "RE")
+TU257_student_list = [student1, student2, student3, student4]
 # TEST CODE ABOVE
 
 # Creating a course object
