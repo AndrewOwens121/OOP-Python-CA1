@@ -122,7 +122,18 @@ def main_menu():
           "2. Search Registered Students\n"
           "3. Queries\n"
           "0. Exit Program")
-    userinput = int(input(": "))
+
+    #taking input from user - hoping its numerical
+    i = input(": ")
+    #Error handling - if its not a number string
+    try:
+        userinput = int(i)
+    except ValueError:
+        print('\nYou did not enter a valid Number!')
+        time.sleep(2)
+        clear_screen()
+        main_menu()
+
     if userinput == 0:
         print("Program Terminated")
         return
@@ -171,13 +182,21 @@ def menu_option2():
           "1: Email Address\n"
           "2. Student Number\n"
           "0. Main Menu\n")
-
-    userinput = int(input(": "))
+    #getting user input
+    i = input(": ")
+    #error handling - in case user input non-int string
+    try:
+        userinput = int(i)
+    except ValueError:
+        print("\n You did not enter a valid Number!")
+        time.sleep(2)
+        clear_screen()
+        main_menu()
 
     if userinput == 0:
         print("Main Menu Selected")
         time.sleep(1)
-        main_menu()
+        menu_option2()
 
     if userinput == 1:
         print("Email Search Selected")
@@ -200,7 +219,16 @@ def menu_option2():
 
             # prompting user if they want to choose between Update and Delete Methods
             print("Would you like to Update or Delete this entry? \n 1: Update\n 2: Delete")
-            usrinput = int(input("Enter Choice: "))
+            #taking user input
+            i = input("Enter Choice: ")
+            #error handling / validation
+            try:
+                usrinput = int(i)
+            except ValueError:
+                print("You did not enter a valid Number!")
+                time.sleep(2)
+                clear_screen()
+                menu_option2()
 
             # Adding conditional choice based on user input
             if usrinput == 1:
@@ -214,7 +242,17 @@ def menu_option2():
                 7. Student Number
                 8. Registration Status
                 """)
-                usrchoice = int(input("Choice : "))
+                #taking user input
+                i = input("Enter Choice: ")
+                #error handling / validation
+                try:
+                    usrchoice = int(i)
+                except ValueError:
+                    print("You did not enter a valid Number!")
+                    time.sleep(2)
+                    clear_screen()
+                    menu_option2()
+
                 updatedInfo = input("Please input replacement value for this field: ")
 
                 # Calls Method to update the student attribute selected by user (usrchoice)
@@ -350,12 +388,12 @@ def clear_screen():
 TU257_student_list = []
 
 # TEST CODE BELOW
-student1 = Student("First", "Ireem", "08/05/96", "New York", "Catcher@gmail.com", "08776556013", "X14363641",
-                   "EL")
-student2 = Student("MaryAnn", "Jones", "18/09/96", "Boston", "MJones55@gmail.com", "0873164013", "R15363641", "EL")
-student3 = Student("Patrick", "Peterson", "14/07/95", "Abu Dhabi", "PPLucan@gmail.com", "0874553845", "D16363641", "EL")
-student4 = Student("Janet", "O'Reilly", "15/10/84", "Sydney", "JOrielly@gmail.com", "0862232134", "L17363641", "RE")
-TU257_student_list = [student1, student2, student3, student4]
+# student1 = Student("First", "Ireem", "08/05/96", "New York", "Catcher@gmail.com", "08776556013", "X14363641",
+#                    "EL")
+# student2 = Student("MaryAnn", "Jones", "18/09/96", "Boston", "MJones55@gmail.com", "0873164013", "R15363641", "EL")
+# student3 = Student("Patrick", "Peterson", "14/07/95", "Abu Dhabi", "PPLucan@gmail.com", "0874553845", "D16363641", "EL")
+# student4 = Student("Janet", "O'Reilly", "15/10/84", "Sydney", "JOrielly@gmail.com", "0862232134", "L17363641", "RE")
+# TU257_student_list = [student1, student2, student3, student4]
 # TEST CODE ABOVE
 
 # Creating a course object
