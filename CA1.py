@@ -154,9 +154,40 @@ def menu_option2():
             usrinput = int(input("Enter Choice: "))
             #Adding conditional choice based on user input
             if usrinput == 1:
-                print()
+                print("""Please select which attribute you would like to update:
+                1. First Name
+                2. Last Name
+                3. DOB
+                4. Address
+                5. Email
+                6. Mobile Number
+                7. Student Number
+                8. Registration Status
+                """)
+                usrchoice = int(input("Choice : "))
+                updatedInfo = input("Please input replacement value for this field: ")
+
+                if usrchoice == 1:
+                    result.fname = updatedInfo
+                if usrchoice == 2:
+                    result.lname = updatedInfo
+                if usrchoice == 3:
+                    result.dob = updatedInfo
+                if usrchoice == 4:
+                    result.address = updatedInfo
+                if usrchoice == 5:
+                    result.email = updatedInfo
+                if usrchoice == 6:
+                    result.mobile = updatedInfo
+                if usrchoice == 7:
+                    result.studentnumber = updatedInfo
+                if usrchoice == 8:
+                    result.status = updatedInfo
+
             elif usrinput == 2:
-                print()
+                TU257.studentlist.remove(result)
+                print(f"{result.fname} {result.lname} - Has been Removed")
+                time.sleep(2)
             else:
                 print("Incorrect Choice - Returning to Menu")
                 time.sleep(2)
@@ -173,16 +204,47 @@ def menu_option2():
 
         else:
             clear_screen()
-            print(f"Match Found! - This Email belongs to : {result.fname} {result.lname}")
+            print(f"Match Found! - This Student Number belongs to : {result.fname} {result.lname}")
             time.sleep(2)
             print("Would you like to Update or Delete this entry? \n 1: Update\n 2: Delete")
             usrinput = int(input("Enter Choice: "))
 
             #Adding conditional choice based on user input
             if usrinput == 1:
-                print()
+                print("""Please select which attribute you would like to update:
+                1. First Name
+                2. Last Name
+                3. DOB
+                4. Address
+                5. Email
+                6. Mobile Number
+                7. Student Number
+                8. Registration Status
+                """)
+                usrchoice = int(input("Choice : "))
+                updatedInfo = input("Please input replacement value for this field: ")
+
+                if usrchoice == 1:
+                    result.fname = updatedInfo
+                if usrchoice == 2:
+                    result.lname = updatedInfo
+                if usrchoice == 3:
+                    result.dob = updatedInfo
+                if usrchoice == 4:
+                    result.address = updatedInfo
+                if usrchoice == 5:
+                    result.email = updatedInfo
+                if usrchoice == 6:
+                    result.mobile = updatedInfo
+                if usrchoice == 7:
+                    result.studentnumber = updatedInfo
+                if usrchoice == 8:
+                    result.status = updatedInfo
+
             elif usrinput == 2:
-                print()
+                TU257.studentlist.remove(result)
+                print(f"{result.fname} {result.lname} - Has been Removed")
+                time.sleep(2)
             else:
                 print("Incorrect Choice - Returning to Menu")
                 time.sleep(2)
