@@ -83,7 +83,7 @@ class Course:
         return statuslist
 
     # Method to update info on student list
-    def update_student(self, student, choice, value):
+    def set_update(self, student, choice, value):
         """
         Method to Update a particular attribute within a student from studentlist
         :param student: Accepts student found via search
@@ -215,7 +215,7 @@ def menu_option2():
 
                 # Calls Method to update the student attribute selected by user (usrchoice)
                 # with the new info, inputted by user (updatedInfo) - 'result' is the student being updated
-                TU257.update_student(student, usrchoice, updatedInfo)
+                TU257.set_update(student, usrchoice, updatedInfo)
 
             elif usrinput == 2:
                 TU257.studentlist.remove(student)
@@ -257,7 +257,7 @@ def menu_option2():
                 usrchoice = int(input("Choice : "))
                 updatedInfo = input("Please input replacement value for this field: ")
 
-                TU257.update_student(student, usrchoice, updatedInfo)
+                TU257.set_update(student, usrchoice, updatedInfo)
 
 
 
@@ -321,12 +321,12 @@ def clear_screen():
 TU257_student_list = []
 
 # TEST CODE BELOW
-student1 = Student("First", "Ireem", "08/05/96", "New York", "Catcher@gmail.com", "08776556013", "X14363641",
-                   "EL")
-student2 = Student("MaryAnn", "Jones", "18/09/96", "Boston", "MJones55@gmail.com", "0873164013", "R15363641", "EL")
-student3 = Student("Patrick", "Peterson", "14/07/95", "Abu Dhabi", "PPLucan@gmail.com", "0874553845", "D16363641", "EL")
-student4 = Student("Janet", "O'Reilly", "15/10/84", "Sydney", "JOrielly@gmail.com", "0862232134", "L17363641", "RE")
-TU257_student_list = [student1, student2, student3, student4]
+# student1 = Student("First", "Ireem", "08/05/96", "New York", "Catcher@gmail.com", "08776556013", "X14363641",
+#                    "EL")
+# student2 = Student("MaryAnn", "Jones", "18/09/96", "Boston", "MJones55@gmail.com", "0873164013", "R15363641", "EL")
+# student3 = Student("Patrick", "Peterson", "14/07/95", "Abu Dhabi", "PPLucan@gmail.com", "0874553845", "D16363641", "EL")
+# student4 = Student("Janet", "O'Reilly", "15/10/84", "Sydney", "JOrielly@gmail.com", "0862232134", "L17363641", "RE")
+# TU257_student_list = [student1, student2, student3, student4]
 # TEST CODE ABOVE
 
 # Creating a course object
