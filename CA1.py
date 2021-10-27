@@ -75,7 +75,8 @@ class Course:
     def student_full_list(self):
         return self.studentlist
 
-    # Method to return List of registered students, first/last name and status
+    # Method to return List of registered students, first/last name and status - Didn't use this function as simpler code to avoid
+    # nested for loop when displaying if i wanted to format the output nicely
     def student_status_list(self):
         statuslist = []
         for student in self.studentlist:
@@ -169,7 +170,7 @@ def menu_option2():
     print("Please Choose from one of the search options below\n"
           "1: Email Address\n"
           "2. Student Number\n"
-          "0. Go Back to Main Menu\n")
+          "0. Main Menu\n")
 
     userinput = int(input(": "))
 
@@ -189,6 +190,7 @@ def menu_option2():
         if student == None:
             print("Match Not Found!")
             time.sleep(2)
+            menu_option2()
 
         # if match is found
         else:
@@ -236,6 +238,7 @@ def menu_option2():
         if student == None:
             print("Match Not Found!")
             time.sleep(2)
+            menu_option2()
 
         else:
             clear_screen()
@@ -285,18 +288,22 @@ def menu_option3():
         print("Main Menu Selected")
         main_menu()
     elif userinput == 1:
+        clear_screen()
         print(f"Number of Students Registered is : {TU257.get_course_count()}")
         time.sleep(2)
         menu_option3()
     elif userinput == 2:
+        clear_screen()
         print(f"Number of Students with RE status is : {TU257.get_re_count()}")
         time.sleep(2)
         menu_option3()
     elif userinput == 3:
+        clear_screen()
         print(f"Number of Students with EL status is : {TU257.get_el_count()}")
         time.sleep(2)
         menu_option3()
     elif userinput == 4:
+        clear_screen()
         print(
             f"{'First Name' :<15}"
             f"{'Last Name':<15}"
@@ -309,6 +316,7 @@ def menu_option3():
         time.sleep(2)
         menu_option3()
     elif userinput == 5:
+        clear_screen()
         #Headers
         print(
             f"{'First Name' :<15}"
