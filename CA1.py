@@ -109,7 +109,6 @@ class Course:
             student.status = value
 
 
-
 def main_menu():
     """
     Function to help organise the Menu System
@@ -139,9 +138,9 @@ def menu_option1():
     Function to help organise the Menu System
     :return: None
     """
-    clear_screen() # Clears screen to make using program easier
+    clear_screen()  # Clears screen to make using program easier
 
-    #Below prompts user for input to required student info
+    # Below prompts user for input to required student info
     print("Please enter the students info below, and hit enter\n")
     fname = input("First Name : ")
     lname = input("Last Name : ")
@@ -156,7 +155,7 @@ def menu_option1():
     TU257.studentlist.append(Student(fname, lname, dob, address, email, phone, studentnum, status))
 
     print("*** Student Successfully Registered ***")
-    time.sleep(2) # pauses screen to help user read message
+    time.sleep(2)  # pauses screen to help user read message
 
 
 def menu_option2():
@@ -164,7 +163,7 @@ def menu_option2():
     Function to help organise the Menu System
     :return: None
     """
-    clear_screen() # Clears screen to make using program easier
+    clear_screen()  # Clears screen to make using program easier
     print("Please Choose from one of the search options below\n"
           "1: Email Address\n"
           "2. Student Number\n"
@@ -181,7 +180,7 @@ def menu_option2():
         print("Email Search Selected")
         email = input("Please enter email address: ")
 
-        #passes the email inputted by user to the email_search method in Course class
+        # passes the email inputted by user to the email_search method in Course class
         student = TU257.email_search(email)
 
         # None is returned by method if no match found
@@ -199,7 +198,7 @@ def menu_option2():
             print("Would you like to Update or Delete this entry? \n 1: Update\n 2: Delete")
             usrinput = int(input("Enter Choice: "))
 
-            #Adding conditional choice based on user input
+            # Adding conditional choice based on user input
             if usrinput == 1:
                 print("""Please select which attribute you would like to update:
                 1. First Name
@@ -214,9 +213,9 @@ def menu_option2():
                 usrchoice = int(input("Choice : "))
                 updatedInfo = input("Please input replacement value for this field: ")
 
-                #Calls Method to update the student attribute selected by user (usrchoice)
-                #with the new info, inputted by user (updatedInfo) - 'result' is the student being updated
-                TU257.update_student(student,usrchoice,updatedInfo)
+                # Calls Method to update the student attribute selected by user (usrchoice)
+                # with the new info, inputted by user (updatedInfo) - 'result' is the student being updated
+                TU257.update_student(student, usrchoice, updatedInfo)
 
             elif usrinput == 2:
                 TU257.studentlist.remove(student)
@@ -243,7 +242,7 @@ def menu_option2():
             print("Would you like to Update or Delete this entry? \n 1: Update\n 2: Delete")
             usrinput = int(input("Enter Choice: "))
 
-            #Adding conditional choice based on user input
+            # Adding conditional choice based on user input
             if usrinput == 1:
                 print("""Please select which attribute you would like to update:
                 1. First Name
@@ -258,13 +257,13 @@ def menu_option2():
                 usrchoice = int(input("Choice : "))
                 updatedInfo = input("Please input replacement value for this field: ")
 
-                TU257.update_student(student,usrchoice,updatedInfo)
+                TU257.update_student(student, usrchoice, updatedInfo)
 
 
 
             elif usrinput == 2:
-                TU257.studentlist.remove(result)
-                print(f"{result.fname} {result.lname} - Has been Removed")
+                TU257.studentlist.remove(student)
+                print(f"{student.fname} {student.lname} - Has been Removed")
                 time.sleep(2)
             else:
                 print("Incorrect Choice - Returning to Menu")
@@ -316,7 +315,6 @@ def menu_option3():
 def clear_screen():
     for i in range(24):
         print()
-
 
 
 # initialising empty student list
