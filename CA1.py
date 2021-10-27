@@ -1,4 +1,5 @@
-import time #Time imported to add delays
+import time  # Time imported to add delays
+
 
 class Student:
     # initialise Student Class, assigning the required parameters to attributes as per below
@@ -54,20 +55,25 @@ class Course:
         return count
 
     # Method to Search for email in registered students
-    def email_search(self,email):
+    def email_search(self, email):
         for student in self.studentlist:
+            # If parameter is equal to a email value within student list,
+            # returns a tuple containing a Bool indicating if a match was found, and first and last name of the student
             if student.email == email:
-                return True
-        return False
+                return True, student.fname, student.lname
+            # returns tuple with one item only, helps keep else statement in menu cleaner
+        return False,
 
-
-    # Method to Search for phone number in registered students
-    def student_num_search(self,studentnumber):
+    # Method to Search for ph2
+    #one number in registered students
+    def student_num_search(self, studentnumber):
         for student in self.studentlist:
+            # If parameter is equal to a student number value within student list,
+            # returns a tuple containing a Bool indicating if a match was found, and first and last name of the student
             if student.studentnumber == studentnumber:
-                return True
-        return False
-
+                return True, student.fname, student.lname
+            # returns tuple with one item only, helps keep else statement in menu cleaner
+        return False,
 
     # Method to return full detailed list of registered students
     def student_full_list(self):
@@ -75,9 +81,9 @@ class Course:
 
     # Methond to return List of registered students, first/last name and status
     def student_status_list(self):
-        statuslist=[]
+        statuslist = []
         for student in self.studentlist:
-            statuslist.append(student.fname+" "+student.lname+" "+student.status)
+            statuslist.append(student.fname + " " + student.lname + " " + student.status)
         return statuslist
 
 
@@ -135,10 +141,9 @@ def menu_option2():
     if userinput == 1:
         print("Email Search Selected")
         email = input("Please enter email address: ")
-        result=course1.email_search(email)
-
-        if result == True:
-            print("Match Found!")
+        result = course1.email_search(email)
+        if result[0] == True:
+            print(f"Match Found! - This Email belongs to : {result[1]} {result[2]}")
             time.sleep(2)
         else:
             print("Match Not Found!")
@@ -147,10 +152,10 @@ def menu_option2():
     if userinput == 2:
         print("Student Number Search Selected")
         studentnum = input("Please enter Student Number: ")
-        result=course1.student_num_search(studentnum)
+        result = course1.student_num_search(studentnum)
 
-        if result == True:
-            print("Match Found!")
+        if result[0] == True:
+            print(f"Match Found! - This Email belongs to : {result[1]} {result[2]}")
             time.sleep(2)
         else:
             print("Match Not Found!")
@@ -187,7 +192,8 @@ def menu_option3():
             print(i)
         time.sleep(2)
     elif userinput == 5:
-        print("First Name - Last Name - DOB - Student Address - Student Email - Student Mobile - Student Number - Student Status")
+        print(
+            "First Name - Last Name - DOB - Student Address - Student Email - Student Mobile - Student Number - Student Status")
         for student in course1.student_full_list():
             print(student.fname, student.lname, student.dob, student.address, student.email,
                   student.mobile, student.studentnumber, student.status, sep="\t")
@@ -197,6 +203,7 @@ def menu_option3():
 def clear_screen():
     for i in range(24):
         print()
+
 
 # initialising empty student list
 course1_student_list = []
