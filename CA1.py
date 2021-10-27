@@ -57,8 +57,7 @@ class Course:
     # Method to Search for email in registered students
     def email_search(self, email):
         for student in self.studentlist:
-            # If parameter is equal to a email value within student list,
-            # returns a tuple containing a Bool indicating if a match was found, and first and last name of the student
+            # If parameter is equal to a email value within student list, return student
             if student.email == email:
                 return student
             # returns tuple with one item only, helps keep else statement in menu cleaner
@@ -85,6 +84,26 @@ class Course:
         for student in self.studentlist:
             statuslist.append(student.fname + " " + student.lname + " " + student.status)
         return statuslist
+
+    #Method to update info on student list
+    def update_student(self, student, choice, value):
+        if choice == 1:
+            student.fname = value
+        if choice == 2:
+            student.lname = value
+        if choice == 3:
+            student.dob = value
+        if choice == 4:
+            student.address = value
+        if choice == 5:
+            student.email = value
+        if choice == 6:
+            student.mobile = value
+        if choice == 7:
+            student.studentnumber = value
+        if choice == 8:
+            student.status = value
+
 
 
 def main_menu():
@@ -166,23 +185,9 @@ def menu_option2():
                 """)
                 usrchoice = int(input("Choice : "))
                 updatedInfo = input("Please input replacement value for this field: ")
-
-                if usrchoice == 1:
-                    result.fname = updatedInfo
-                if usrchoice == 2:
-                    result.lname = updatedInfo
-                if usrchoice == 3:
-                    result.dob = updatedInfo
-                if usrchoice == 4:
-                    result.address = updatedInfo
-                if usrchoice == 5:
-                    result.email = updatedInfo
-                if usrchoice == 6:
-                    result.mobile = updatedInfo
-                if usrchoice == 7:
-                    result.studentnumber = updatedInfo
-                if usrchoice == 8:
-                    result.status = updatedInfo
+                #Calls Method to update the student attribute selected by user (usrchoice)
+                #with the new info, inputted by user (updatedInfo)
+                TU257.update_student(result,usrchoice,updatedInfo)
 
             elif usrinput == 2:
                 TU257.studentlist.remove(result)
@@ -224,22 +229,9 @@ def menu_option2():
                 usrchoice = int(input("Choice : "))
                 updatedInfo = input("Please input replacement value for this field: ")
 
-                if usrchoice == 1:
-                    result.fname = updatedInfo
-                if usrchoice == 2:
-                    result.lname = updatedInfo
-                if usrchoice == 3:
-                    result.dob = updatedInfo
-                if usrchoice == 4:
-                    result.address = updatedInfo
-                if usrchoice == 5:
-                    result.email = updatedInfo
-                if usrchoice == 6:
-                    result.mobile = updatedInfo
-                if usrchoice == 7:
-                    result.studentnumber = updatedInfo
-                if usrchoice == 8:
-                    result.status = updatedInfo
+                TU257.update_student(result,usrchoice,updatedInfo)
+
+
 
             elif usrinput == 2:
                 TU257.studentlist.remove(result)
@@ -249,8 +241,6 @@ def menu_option2():
                 print("Incorrect Choice - Returning to Menu")
                 time.sleep(2)
                 menu_option2()
-
-        # Add function to search for email
 
 
 def menu_option3():
@@ -297,6 +287,7 @@ def menu_option3():
 def clear_screen():
     for i in range(24):
         print()
+
 
 
 # initialising empty student list
