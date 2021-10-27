@@ -60,9 +60,9 @@ class Course:
             # If parameter is equal to a email value within student list,
             # returns a tuple containing a Bool indicating if a match was found, and first and last name of the student
             if student.email == email:
-                return True, student.fname, student.lname
+                return student
             # returns tuple with one item only, helps keep else statement in menu cleaner
-        return False,
+        return None,
 
     # Method to Search for ph2
     #one number in registered students
@@ -71,9 +71,9 @@ class Course:
             # If parameter is equal to a student number value within student list,
             # returns a tuple containing a Bool indicating if a match was found, and first and last name of the student
             if student.studentnumber == studentnumber:
-                return True, student.fname, student.lname
+                return student
             # returns tuple with one item only, helps keep else statement in menu cleaner
-        return False,
+        return None,
 
     # Method to return full detailed list of registered students
     def student_full_list(self):
@@ -142,30 +142,51 @@ def menu_option2():
         print("Email Search Selected")
         email = input("Please enter email address: ")
         result = TU257.email_search(email)
-        if result[0] == True:
+        if result == None:
+            print("Match Not Found!")
+            time.sleep(2)
+
+        else:
             clear_screen()
-            print(f"Match Found! - This Email belongs to : {result[1]} {result[2]}")
+            print(f"Match Found! - This Email belongs to : {result.fname} {result.lname}")
             time.sleep(2)
             print("Would you like to Update or Delete this entry? \n 1: Update\n 2: Delete")
             usrinput = int(input("Enter Choice: "))
-        else:
-            print("Match Not Found!")
-            time.sleep(2)
+            #Adding conditional choice based on user input
+            if usrinput == 1:
+                print()
+            elif usrinput == 2:
+                print()
+            else:
+                print("Incorrect Choice - Returning to Menu")
+                time.sleep(2)
+                menu_option2()
 
     if userinput == 2:
         print("Student Number Search Selected")
         studentnum = input("Please enter Student Number: ")
         result = TU257.student_num_search(studentnum)
 
-        if result[0] == True:
+        if result == None:
+            print("Match Not Found!")
+            time.sleep(2)
+
+        else:
             clear_screen()
-            print(f"Match Found! - This Email belongs to : {result[1]} {result[2]}")
+            print(f"Match Found! - This Email belongs to : {result.fname} {result.lname}")
             time.sleep(2)
             print("Would you like to Update or Delete this entry? \n 1: Update\n 2: Delete")
             usrinput = int(input("Enter Choice: "))
-        else:
-            print("Match Not Found!")
-            time.sleep(2)
+
+            #Adding conditional choice based on user input
+            if usrinput == 1:
+                print()
+            elif usrinput == 2:
+                print()
+            else:
+                print("Incorrect Choice - Returning to Menu")
+                time.sleep(2)
+                menu_option2()
 
         # Add function to search for email
 
